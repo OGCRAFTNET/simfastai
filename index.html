@@ -14,6 +14,7 @@
             height: 100vh;
             color: white;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
@@ -73,6 +74,48 @@
             opacity: 0.7;
         }
 
+        .about-section {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            margin-top: 100px;
+            padding: 50px;
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .about-header {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .team {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            text-align: center;
+            max-width: 150px;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
         .footer {
             position: absolute;
             bottom: 10px;
@@ -82,7 +125,6 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Animation for fade-in */
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
@@ -91,7 +133,6 @@
         .fade-in {
             animation: fadeIn 1s ease-out;
         }
-
     </style>
 </head>
 <body>
@@ -104,6 +145,33 @@
 
         <p class="coming-soon">Stay tuned for updates and sneak peeks!</p>
     </div>
+
+    <!-- About Us Section -->
+    <div class="about-section fade-in">
+        <h2 class="about-header">About Us</h2>
+        <p class="about-text">
+            SimFast AiV1 is a groundbreaking artificial intelligence model designed to revolutionize the world of AI modeling. Developed by a team of visionary engineers and researchers, SimFast AiV1 leverages cutting-edge algorithms to push the boundaries of what AI can achieve.
+        </p>
+        <p class="about-text">
+            We believe that AI should not only be powerful but also intuitive, adaptable, and capable of evolving with the world around us. Our mission is to create an AI that doesn't just serve its purpose but transforms industries and empowers users in ways never seen before.
+        </p>
+
+        <div class="team">
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member 1">
+                <p><strong>John Doe</strong><br>CEO & Founder</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member 2">
+                <p><strong>Jane Smith</strong><br>Lead Developer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member 3">
+                <p><strong>Emily Taylor</strong><br>Research Scientist</p>
+            </div>
+        </div>
+    </div>
+
     <div class="footer">
         <p>&copy; 2025 SimFast AI | All Rights Reserved</p>
     </div>
