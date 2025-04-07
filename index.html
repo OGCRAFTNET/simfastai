@@ -10,7 +10,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background: #121212;
             height: 100vh;
             color: white;
             display: flex;
@@ -33,6 +33,7 @@
             margin-bottom: 20px;
             letter-spacing: 2px;
             text-transform: uppercase;
+            color: #fff;
         }
 
         .subheader {
@@ -75,7 +76,7 @@
         }
 
         .about-section {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 20px;
             margin-top: 100px;
             padding: 50px;
@@ -88,6 +89,7 @@
             font-size: 36px;
             font-weight: bold;
             margin-bottom: 20px;
+            color: #fff;
         }
 
         .about-text {
@@ -95,17 +97,21 @@
             opacity: 0.9;
             margin-bottom: 20px;
             line-height: 1.6;
+            color: #ddd;
         }
 
         .team {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
         }
 
         .team-member {
             text-align: center;
             max-width: 150px;
+            margin-bottom: 20px;
         }
 
         .team-member img {
@@ -133,6 +139,17 @@
         .fade-in {
             animation: fadeIn 1s ease-out;
         }
+
+        /* Chatbot Positionierung */
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 300px;
+            height: 500px;
+        }
+
     </style>
 </head>
 <body>
@@ -150,26 +167,24 @@
     <div class="about-section fade-in">
         <h2 class="about-header">About Us</h2>
         <p class="about-text">
-            SimFast AiV1 is a groundbreaking artificial intelligence model designed to revolutionize the world of AI modeling. Developed by a team of visionary engineers and researchers, SimFast AiV1 leverages cutting-edge algorithms to push the boundaries of what AI can achieve.
+            SimFast AiV1 is a groundbreaking artificial intelligence model designed by one visionary engineer to revolutionize the world of AI modeling. Developed by **Simon L. aka Simflix / OGCRAFTNET**, this model leverages cutting-edge algorithms to push the boundaries of AI technology.
         </p>
         <p class="about-text">
-            We believe that AI should not only be powerful but also intuitive, adaptable, and capable of evolving with the world around us. Our mission is to create an AI that doesn't just serve its purpose but transforms industries and empowers users in ways never seen before.
+            The mission of SimFast AiV1 is to create a truly advanced AI that is not only powerful but also intuitive, adaptable, and capable of evolving with the world. This vision is driven by a passion for shaping the future of AI, providing users with transformative experiences.
         </p>
 
         <div class="team">
             <div class="team-member">
-                <img src="https://via.placeholder.com/100" alt="Team Member 1">
-                <p><strong>John Doe</strong><br>CEO & Founder</p>
-            </div>
-            <div class="team-member">
-                <img src="https://via.placeholder.com/100" alt="Team Member 2">
-                <p><strong>Jane Smith</strong><br>Lead Developer</p>
-            </div>
-            <div class="team-member">
-                <img src="https://via.placeholder.com/100" alt="Team Member 3">
-                <p><strong>Emily Taylor</strong><br>Research Scientist</p>
+                <img src="https://via.placeholder.com/100" alt="Simon L.">
+                <p><strong>Simon L. aka Simflix / OGCRAFTNET</strong><br>Founder & Lead Developer</p>
             </div>
         </div>
+    </div>
+
+    <!-- Elfsight AI Chatbot -->
+    <div class="chatbot">
+        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+        <div class="elfsight-app-cc092961-2fdb-4020-9c94-eb2b0ca9cfc1" data-elfsight-app-lazy></div>
     </div>
 
     <div class="footer">
