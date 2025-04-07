@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SimFast AiV1 | Coming in 2026</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            max-width: 90%;
+        }
+
+        .header {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .subheader {
+            font-size: 22px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .button {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            backdrop-filter: blur(10px);
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .coming-soon {
+            margin-top: 40px;
+            font-size: 18px;
+            opacity: 0.7;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animation for fade-in */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="glass-effect">
+            <h1 class="header">SimFast AiV1</h1>
+            <p class="subheader">The Future of AI Modeling, Coming in 2026</p>
+            <button class="button">Learn More</button>
+        </div>
+
+        <p class="coming-soon">Stay tuned for updates and sneak peeks!</p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 SimFast AI | All Rights Reserved</p>
+    </div>
+</body>
+</html>
