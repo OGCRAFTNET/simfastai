@@ -141,7 +141,7 @@
     </div>
 
     <script>
-        const apiKey = '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'; // Ersetze durch deinen OpenRouter API Key
+        const apiKey = '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'; // Ersetze durch deinen OpenRouter API Key
         
         // Chat Management
         let chatHistory = [];
@@ -509,7 +509,7 @@
                     'Authorization': `Bearer ${apiKey}`,
                 },
                 body: JSON.stringify({
-                    model: 'meta-llama/llama-4-maverick:free',  // Primäres Modell
+                    model: 'google/gemini-2.0-flash-thinking-exp:free',  // Primäres Modell
                     models: [
                         'google/gemini-2.5-pro-exp-03-25:free',
                         'google/gemma-3-1b-it:free'
