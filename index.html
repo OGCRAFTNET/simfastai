@@ -141,7 +141,7 @@
     </div>
 
     <script>
-        const apiKey = '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'; // Ersetze durch deinen OpenRouter API Key
+        const apiKey = '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'; // Ersetze durch deinen OpenRouter API Key
         
         // Chat Management
         let chatHistory = [];
@@ -314,7 +314,7 @@
         // Funktion zum Löschen eines Chats
         function deleteChat(chatId) {
             // Frage den Benutzer, ob er den Chat wirklich löschen möchte
-            if (confirm('Möchtest du diesen Chat wirklich löschen?')) {
+            if (confirm('Do you really want to delete this chat?')) {
                 // Entferne den Chat aus dem Verlauf
                 chatHistory = chatHistory.filter(chat => chat.id !== chatId);
                 
@@ -509,10 +509,10 @@
                     'Authorization': `Bearer ${apiKey}`,
                 },
                 body: JSON.stringify({
-                    model: 'openai/gpt-4',  // Primäres Modell
+                    model: 'meta-llama/llama-4-maverick:free',  // Primäres Modell
                     models: [
-                        'anthropic/claude-3.5-sonnet',
-                        'gryphe/mythomax-l2-13b'
+                        'google/gemini-2.5-pro-exp-03-25:free',
+                        'google/gemma-3-1b-it:free'
                     ], // Liste von Fallback-Modellen
                     messages: chatMessagesStore[currentChatId]
                 })
