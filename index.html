@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SimFast AiV1 – Coming 2026</title>
-  <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
   <style>
     * {
       margin: 0;
@@ -44,6 +43,24 @@
       font-size: 1.3rem;
       max-width: 600px;
       opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+
+    .test-button {
+      padding: 1rem 2rem;
+      background: linear-gradient(90deg, #00bfff, #00ffe1);
+      border: none;
+      border-radius: 999px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .test-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffe1;
     }
 
     section {
@@ -65,19 +82,13 @@
       font-size: 1.1rem;
       line-height: 1.6;
     }
-
-    zapier-interfaces-chatbot-embed {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-    }
   </style>
 </head>
 <body>
   <header>
     <h1>SimFast AiV1</h1>
     <p>Ein neues Zeitalter der künstlichen Intelligenz beginnt – Coming 2026</p>
+    <button class="test-button" onclick="window.location.href='v1.html'">Test Now</button>
   </header>
 
   <section id="about">
@@ -87,9 +98,5 @@
       <p>Die Vision: Eine zugängliche, intelligente und elegante KI, inspiriert vom Design und der Benutzerfreundlichkeit der Zukunft.</p>
     </div>
   </section>
-
-  <!-- Zapier AI Chatbot Embed -->
-  <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cm98g07ed004pj7wgtbpakykr'></zapier-interfaces-chatbot-embed>
-
 </body>
 </html>
