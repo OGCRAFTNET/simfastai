@@ -1,102 +1,567 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SimFast AiV1 – Coming 2026</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color: white;
-      overflow-x: hidden;
-    }
-
-    header {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      backdrop-filter: blur(12px);
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 3rem;
-    }
-
-    h1 {
-      font-size: 4rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #00ffe1, #00bfff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1.3rem;
-      max-width: 600px;
-      opacity: 0.85;
-      margin-bottom: 2rem;
-    }
-
-    .test-button {
-      padding: 1rem 2rem;
-      background: linear-gradient(90deg, #00bfff, #00ffe1);
-      border: none;
-      border-radius: 999px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #000;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .test-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #00ffe1;
-    }
-
-    section {
-      padding: 4rem 2rem;
-      background-color: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(8px);
-      margin: 2rem auto;
-      border-radius: 20px;
-      max-width: 900px;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #00bfff;
-    }
-
-    .about-text {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimFastV1 Coding AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>SimFast AiV1</h1>
-    <p>Ein neues Zeitalter der künstlichen Intelligenz beginnt – Coming 2026</p>
-    <button class="test-button" onclick="window.location.href='v1.html'">Test Now</button>
-  </header>
+    <div class="app-container">
+        <!-- Left sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <button id="newChatBtn" class="new-chat-btn">+ New Chat</button>
+            </div>
+            <div class="sidebar-content">
+                <div id="chatHistory" class="chat-history">
+                    <!-- Chat history will be populated dynamically -->
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 8v4"></path>
+                        <path d="M12 16h.01"></path>
+                    </svg>
+                    <span>Coming Soon</span>
+                </div>
+            </div>
+        </div>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <div class="about-text">
-      <p>SimFast AiV1 ist ein innovatives KI-Projekt, das von nur einer Person entwickelt wird: <strong>Simon L.</strong>, auch bekannt als <strong>Simflix / OGCRAFTNET</strong>.</p>
-      <p>Die Vision: Eine zugängliche, intelligente und elegante KI, inspiriert vom Design und der Benutzerfreundlichkeit der Zukunft.</p>
+        <!-- Main chat area -->
+        <div class="main-content">
+            <!-- Chat header -->
+            <div class="chat-header">
+                <div class="mobile-menu">
+                    <button id="toggleSidebar" class="toggle-sidebar-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <h1 id="chatTitle">SimFastV1</h1>
+                <div class="model-selector">
+                    <span>Model: SimFast-V1</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Chat content -->
+            <div class="chat-content">
+                <div id="welcome-screen" class="welcome-screen">
+                    <div class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <h2>SimFastV1 Chatbot</h2>
+                    
+                    <div class="features">
+                        <div class="feature-column">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <path d="M12 1v2"></path>
+                                    <path d="M12 21v2"></path>
+                                    <path d="M4.22 4.22l1.42 1.42"></path>
+                                    <path d="M18.36 18.36l1.42 1.42"></path>
+                                    <path d="M1 12h2"></path>
+                                    <path d="M21 12h2"></path>
+                                    <path d="M4.22 19.78l1.42-1.42"></path>
+                                    <path d="M18.36 5.64l1.42-1.42"></path>
+                                </svg>
+                            </div>
+                            <h3>Examples</h3>
+                            <div class="example-buttons">
+                                <button class="example-btn">"Explain quantum computing in simple terms" →</button>
+                                <button class="example-btn">"Do you have any creative ideas for a 10th birthday?" →</button>
+                                <button class="example-btn">"How do I create an HTTP request in JavaScript?" →</button>
+                            </div>
+                        </div>
+                        <div class="feature-column">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M13 2 L18 2 L18 7"></path>
+                                    <path d="M18 2 L8 12"></path>
+                                    <path d="M2 15 L15 15 L15 22 L2 22 Z"></path>
+                                </svg>
+                            </div>
+                            <h3>Capabilities</h3>
+                            <ul class="feature-list">
+                            <li>Remembers previous messages in the conversation</li>
+                            <li>Allows users to provide improvements</li>
+                            <li>Rejects inappropriate requests</li>
+                            </ul>
+                        </div>
+                        <div class="feature-column">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                </svg>
+                            </div>
+                            <h3>Limitations</h3>
+                            <ul class="feature-list">
+                            <li>May occasionally generate false information</li>
+                            <li>May occasionally produce harmful instructions or biased content</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chat" class="chat-box"></div>
+            </div>
+
+            <!-- Chat input -->
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <input type="text" id="userInput" placeholder="Nachricht an SimFastV1...">
+                    <button id="sendButton" aria-label="Senden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m22 2-7 20-4-9-9-4 20-7z"></path>
+                            <path d="M22 2 11 13"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="disclaimer">
+                  SimFastV1 can make errors. Check important information.
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+
+    <script>
+        const apiKey = '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'; // Ersetze durch deinen OpenRouter API Key
+        
+        // Chat Management
+        let chatHistory = [];
+        let currentChatId = null;
+        let chatMessagesStore = {}; // Speichert alle Nachrichten für jeden Chat
+
+        // Initialisierung beim Laden der Seite
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lade den Chatverlauf aus dem lokalen Speicher
+            loadChatHistory();
+            
+            // Erstelle einen neuen Chat, wenn noch keiner vorhanden ist
+            if (chatHistory.length === 0) {
+                createNewChat();
+            } else {
+                // Lade den letzten Chat
+                loadChat(chatHistory[0].id);
+            }
+
+            // Event Listener für das Umschalten des Sidebars auf mobilen Geräten
+            document.getElementById('toggleSidebar').addEventListener('click', function() {
+                document.querySelector('.sidebar').classList.toggle('show');
+            });
+        });
+
+        // Funktion zum Laden des Chatverlaufs aus dem lokalen Speicher
+        function loadChatHistory() {
+            const savedHistory = localStorage.getItem('chatHistory');
+            const savedMessages = localStorage.getItem('chatMessages');
+            
+            if (savedHistory) {
+                chatHistory = JSON.parse(savedHistory);
+                renderChatHistory();
+            }
+            
+            if (savedMessages) {
+                chatMessagesStore = JSON.parse(savedMessages);
+            }
+        }
+
+        // Funktion zum Speichern des Chatverlaufs im lokalen Speicher
+        function saveChatHistory() {
+            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+            localStorage.setItem('chatMessages', JSON.stringify(chatMessagesStore));
+        }
+
+        // Funktion zum Erstellen eines neuen Chats
+        function createNewChat() {
+            // Generiere eine eindeutige ID für den Chat
+            const chatId = 'chat_' + Date.now();
+            const chatTitle = 'Neuer Chat';
+            
+            // Erstelle ein neues Chat-Objekt und füge es am Anfang der Liste ein
+            const newChat = {
+                id: chatId,
+                title: chatTitle,
+                timestamp: new Date().toISOString()
+            };
+            
+            chatHistory.unshift(newChat);
+            chatMessagesStore[chatId] = [];
+            
+            // Speichere den aktualisierten Chatverlauf
+            saveChatHistory();
+            
+            // Aktualisiere die Anzeige
+            renderChatHistory();
+            
+            // Lade den neuen Chat
+            loadChat(chatId);
+            
+            // Zeige die Willkommensseite an
+            document.getElementById('welcome-screen').style.display = 'flex';
+            document.getElementById('chat').innerHTML = '';
+        }
+
+        // Funktion zum Rendern des Chatverlaufs in der Sidebar
+        function renderChatHistory() {
+            const chatHistoryElement = document.getElementById('chatHistory');
+            chatHistoryElement.innerHTML = '';
+            
+            chatHistory.forEach(chat => {
+                const chatElement = document.createElement('div');
+                chatElement.classList.add('chat-history-item');
+                
+                // Markiere den aktuellen Chat
+                if (chat.id === currentChatId) {
+                    chatElement.classList.add('active');
+                }
+                
+                chatElement.dataset.chatId = chat.id;
+                
+                // Erstelle das Inhaltselement für den Chat
+                chatElement.innerHTML = `
+                    <div class="chat-history-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="chat-history-title">${chat.title}</div>
+                    <div class="chat-history-actions">
+                        <button class="delete-chat" data-chat-id="${chat.id}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 6h18"></path>
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                
+                // Event-Listener für das Klicken auf einen Chat
+                chatElement.addEventListener('click', function(e) {
+                    // Vermeide das Auslösen des Events beim Klicken auf den Löschen-Button
+                    if (!e.target.closest('.delete-chat')) {
+                        loadChat(chat.id);
+                        // Schließe das Sidebar auf mobilen Geräten
+                        document.querySelector('.sidebar').classList.remove('show');
+                    }
+                });
+                
+                chatHistoryElement.appendChild(chatElement);
+            });
+            
+            // Event-Listener für die Löschen-Buttons
+            document.querySelectorAll('.delete-chat').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Verhindere, dass der Chat geladen wird
+                    const chatId = this.dataset.chatId;
+                    deleteChat(chatId);
+                });
+            });
+        }
+
+        // Funktion zum Laden eines Chats
+        function loadChat(chatId) {
+            currentChatId = chatId;
+            
+            // Finde den Chat im Verlauf
+            const chat = chatHistory.find(c => c.id === chatId);
+            
+            if (chat) {
+                // Aktualisiere den Titel
+                document.getElementById('chatTitle').textContent = chat.title;
+                
+                // Aktualisiere den Chat-Verlauf und markiere den aktuellen Chat
+                renderChatHistory();
+                
+                // Lade die Nachrichten des Chats
+                const messages = chatMessagesStore[chatId] || [];
+                
+                // Leere das Chat-Fenster
+                document.getElementById('chat').innerHTML = '';
+                
+                if (messages.length === 0) {
+                    // Zeige den Willkommensbildschirm, wenn keine Nachrichten vorhanden sind
+                    document.getElementById('welcome-screen').style.display = 'flex';
+                } else {
+                    // Verstecke den Willkommensbildschirm
+                    document.getElementById('welcome-screen').style.display = 'none';
+                    
+                    // Zeige alle Nachrichten an
+                    messages.forEach(msg => {
+                        displayMessage(msg.content, msg.role === 'user' ? 'user' : 'bot');
+                    });
+                }
+            }
+        }
+
+        // Funktion zum Löschen eines Chats
+        function deleteChat(chatId) {
+            // Frage den Benutzer, ob er den Chat wirklich löschen möchte
+            if (confirm('Möchtest du diesen Chat wirklich löschen?')) {
+                // Entferne den Chat aus dem Verlauf
+                chatHistory = chatHistory.filter(chat => chat.id !== chatId);
+                
+                // Entferne die Nachrichten des Chats
+                delete chatMessagesStore[chatId];
+                
+                // Speichere die Änderungen
+                saveChatHistory();
+                
+                // Wenn der aktuelle Chat gelöscht wurde
+                if (currentChatId === chatId) {
+                    if (chatHistory.length > 0) {
+                        // Lade den ersten Chat in der Liste
+                        loadChat(chatHistory[0].id);
+                    } else {
+                        // Erstelle einen neuen Chat, wenn keine Chats mehr vorhanden sind
+                        createNewChat();
+                    }
+                } else {
+                    // Aktualisiere nur die Anzeige, wenn ein anderer Chat gelöscht wurde
+                    renderChatHistory();
+                }
+            }
+        }
+
+        // Funktion zum Aktualisieren des Chat-Titels basierend auf der ersten Nachricht
+        function updateChatTitle(message) {
+            // Suche nach dem aktuellen Chat im Chatverlauf
+            const chatIndex = chatHistory.findIndex(chat => chat.id === currentChatId);
+            
+            if (chatIndex !== -1 && chatHistory[chatIndex].title === 'Neuer Chat') {
+                // Verwende die ersten 25 Zeichen der Nachricht als Titel
+                const title = message.length > 25 ? message.substring(0, 25) + '...' : message;
+                chatHistory[chatIndex].title = title;
+                
+                // Aktualisiere den Titel und den Chatverlauf
+                document.getElementById('chatTitle').textContent = title;
+                saveChatHistory();
+                renderChatHistory();
+            }
+        }
+
+        // Event Listeners für Beispiel-Buttons
+        document.querySelectorAll('.example-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const text = this.textContent.replace(' →', '').replace(/^"(.+)"$/, '$1');
+                document.getElementById('userInput').value = text;
+                // Hide welcome screen when an example is clicked
+                document.getElementById('welcome-screen').style.display = 'none';
+                sendMessage();
+            });
+        });
+
+        // Event Listener für den "Neuer Chat" Button
+        document.getElementById('newChatBtn').addEventListener('click', createNewChat);
+
+        // Funktion, um Nachrichten anzuzeigen
+        function displayMessage(message, sender) {
+            // Hide welcome screen when a message is displayed
+            document.getElementById('welcome-screen').style.display = 'none';
+            
+            const chat = document.getElementById("chat");
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", sender);
+            
+            // Create avatar and content divs
+            const avatarDiv = document.createElement("div");
+            avatarDiv.classList.add("avatar");
+            
+            // Add appropriate icon based on sender
+            if (sender === "bot") {
+                avatarDiv.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 16v-4"></path>
+                        <path d="M12 8h.01"></path>
+                    </svg>
+                `;
+            } else {
+                avatarDiv.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                `;
+            }
+            
+            const contentDiv = document.createElement("div");
+            contentDiv.classList.add("content");
+            
+            if (isCode(message)) {
+                // Handle code blocks
+                const parts = message.split("```");
+                for (let i = 0; i < parts.length; i++) {
+                    if (i % 2 === 0) {
+                        // Text part
+                        if (parts[i].trim()) {
+                            const textSpan = document.createElement("span");
+                            textSpan.textContent = parts[i];
+                            contentDiv.appendChild(textSpan);
+                        }
+                    } else {
+                        // Code part
+                        const codeBlock = document.createElement("pre");
+                        codeBlock.classList.add("code-block");
+                        
+                        // Check if there's a language specified
+                        const codeContent = parts[i].trim();
+                        const firstLineEnd = codeContent.indexOf('\n');
+                        
+                        if (firstLineEnd > 0) {
+                            const possibleLang = codeContent.substring(0, firstLineEnd).trim();
+                            if (['javascript', 'js', 'html', 'css', 'python', 'java', 'c', 'cpp'].includes(possibleLang)) {
+                                codeBlock.textContent = codeContent.substring(firstLineEnd + 1);
+                                codeBlock.classList.add(`language-${possibleLang}`);
+                            } else {
+                                codeBlock.textContent = codeContent;
+                            }
+                        } else {
+                            codeBlock.textContent = codeContent;
+                        }
+                        
+                        contentDiv.appendChild(codeBlock);
+                    }
+                }
+            } else {
+                contentDiv.textContent = message;
+            }
+            
+            // Assemble the message
+            messageDiv.appendChild(avatarDiv);
+            messageDiv.appendChild(contentDiv);
+            
+            chat.appendChild(messageDiv);
+            chat.scrollTop = chat.scrollHeight; // Scroll to bottom
+            messageDiv.classList.add("fade-in");
+        }
+
+        // Funktion, um zu überprüfen, ob der Text Code ist
+        function isCode(text) {
+            return text.includes("```");
+        }
+
+        // Funktion, um die Nachricht zu senden
+        function sendMessage() {
+            const userInput = document.getElementById("userInput");
+            const message = userInput.value;
+            if (message.trim() === "") return; // Keine leere Nachricht
+
+            // Aktualisiere den Chat-Titel bei der ersten Nachricht
+            if (chatMessagesStore[currentChatId].length === 0) {
+                updateChatTitle(message);
+            }
+
+            // Füge die Nachricht zum Chat hinzu
+            displayMessage(message, "user");
+            
+            // Speichere die Nachricht im aktuellen Chat
+            chatMessagesStore[currentChatId].push({ role: 'user', content: message });
+            saveChatHistory();
+            
+            userInput.value = ""; // Eingabefeld leeren
+
+            // Show typing indicator
+            const chat = document.getElementById("chat");
+            const typingIndicator = document.createElement("div");
+            typingIndicator.classList.add("message", "bot", "typing-indicator");
+            typingIndicator.innerHTML = `
+                <div class="avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 16v-4"></path>
+                        <path d="M12 8h.01"></path>
+                    </svg>
+                </div>
+                <div class="content">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            `;
+            chat.appendChild(typingIndicator);
+            chat.scrollTop = chat.scrollHeight;
+
+            // Anfrage an OpenRouter API
+            fetch('https://openrouter.ai/api/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`,
+                },
+                body: JSON.stringify({
+                    model: 'openai/gpt-4',  // Primäres Modell
+                    models: [
+                        'anthropic/claude-3.5-sonnet',
+                        'gryphe/mythomax-l2-13b'
+                    ], // Liste von Fallback-Modellen
+                    messages: chatMessagesStore[currentChatId]
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Remove typing indicator
+                const typingIndicator = document.querySelector(".typing-indicator");
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+                
+                const botMessage = data.choices && data.choices[0]?.message?.content;
+                if (botMessage) {
+                    displayMessage(botMessage, "bot");
+                    // Speichere die Antwort im aktuellen Chat
+                    chatMessagesStore[currentChatId].push({ role: 'assistant', content: botMessage });
+                    saveChatHistory();
+                } else {
+                    console.error("Fehler: Keine Antwort vom Bot.");
+                    displayMessage("Entschuldigung, ich konnte keine Antwort generieren. Bitte versuche es erneut.", "bot");
+                    // Speichere die Fehlerantwort im aktuellen Chat
+                    chatMessagesStore[currentChatId].push({ role: 'assistant', content: "Entschuldigung, ich konnte keine Antwort generieren. Bitte versuche es erneut." });
+                    saveChatHistory();
+                }
+            })
+            .catch(error => {
+                console.error('Fehler:', error);
+                // Remove typing indicator
+                const typingIndicator = document.querySelector(".typing-indicator");
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+                displayMessage("Entschuldigung, es gab einen Fehler bei der Verbindung. Bitte versuche es erneut.", "bot");
+                // Speichere die Fehlerantwort im aktuellen Chat
+                chatMessagesStore[currentChatId].push({ role: 'assistant', content: "Entschuldigung, es gab einen Fehler bei der Verbindung. Bitte versuche es erneut." });
+                saveChatHistory();
+            });
+        }
+
+        // Event Listener für den Sendebutton
+        document.getElementById("sendButton").addEventListener("click", sendMessage);
+
+        // Event Listener für das Enter-Taste-Drücken
+        document.getElementById("userInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
+    </script>
 </body>
 </html>
