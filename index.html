@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+<link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1305540167653658725/1359529898959569108/Screenshot_2025-04-09_160455.png?ex=67f7d062&is=67f67ee2&hm=c5a58d513abe90a21571ee00c49bb0d44ad28b4eb752e595f5571f916b96299d&">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="app-container">
@@ -141,7 +145,7 @@
     </div>
 
     <script>
-        const apiKey = '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'; // Ersetze durch deinen OpenRouter API Key
+        const apiKey = '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'; // Ersetze durch deinen OpenRouter API Key
         
         // Chat Management
         let chatHistory = [];
@@ -372,86 +376,97 @@
         document.getElementById('newChatBtn').addEventListener('click', createNewChat);
 
         // Funktion, um Nachrichten anzuzeigen
-        function displayMessage(message, sender) {
-            // Hide welcome screen when a message is displayed
-            document.getElementById('welcome-screen').style.display = 'none';
-            
-            const chat = document.getElementById("chat");
-            const messageDiv = document.createElement("div");
-            messageDiv.classList.add("message", sender);
-            
-            // Create avatar and content divs
-            const avatarDiv = document.createElement("div");
-            avatarDiv.classList.add("avatar");
-            
-            // Add appropriate icon based on sender
-            if (sender === "bot") {
-                avatarDiv.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 16v-4"></path>
-                        <path d="M12 8h.01"></path>
-                    </svg>
-                `;
-            } else {
-                avatarDiv.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                `;
-            }
-            
-            const contentDiv = document.createElement("div");
-            contentDiv.classList.add("content");
-            
-            if (isCode(message)) {
-                // Handle code blocks
-                const parts = message.split("```");
-                for (let i = 0; i < parts.length; i++) {
-                    if (i % 2 === 0) {
-                        // Text part
-                        if (parts[i].trim()) {
-                            const textSpan = document.createElement("span");
-                            textSpan.textContent = parts[i];
-                            contentDiv.appendChild(textSpan);
-                        }
-                    } else {
-                        // Code part
-                        const codeBlock = document.createElement("pre");
-                        codeBlock.classList.add("code-block");
-                        
-                        // Check if there's a language specified
-                        const codeContent = parts[i].trim();
-                        const firstLineEnd = codeContent.indexOf('\n');
-                        
-                        if (firstLineEnd > 0) {
-                            const possibleLang = codeContent.substring(0, firstLineEnd).trim();
-                            if (['javascript', 'js', 'html', 'css', 'python', 'java', 'c', 'cpp'].includes(possibleLang)) {
-                                codeBlock.textContent = codeContent.substring(firstLineEnd + 1);
-                                codeBlock.classList.add(`language-${possibleLang}`);
-                            } else {
-                                codeBlock.textContent = codeContent;
-                            }
-                        } else {
-                            codeBlock.textContent = codeContent;
-                        }
-                        
-                        contentDiv.appendChild(codeBlock);
-                    }
+// Funktion, um Nachrichten anzuzeigen
+function displayMessage(message, sender) {
+    document.getElementById('welcome-screen').style.display = 'none';
+    
+    const chat = document.getElementById("chat");
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("message", sender);
+    
+    // Create avatar and content divs
+    const avatarDiv = document.createElement("div");
+    avatarDiv.classList.add("avatar");
+    
+    // Add appropriate icon based on sender
+    if (sender === "bot") {
+        avatarDiv.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+            </svg>
+        `;
+    } else {
+        avatarDiv.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        `;
+    }
+    
+    const contentDiv = document.createElement("div");
+    contentDiv.classList.add("content");
+    
+    // Handle bold text
+    const boldTextPattern = /\*\*(.*?)\*\*/g;
+    if (boldTextPattern.test(message)) {
+        message = message.replace(boldTextPattern, '<b>$1</b>');
+        contentDiv.innerHTML = message;
+    } else if (isCode(message)) {
+        // Handle code blocks
+        const parts = message.split("```");
+        for (let i = 0; i < parts.length; i++) {
+            if (i % 2 === 0) {
+                // Text part
+                if (parts[i].trim()) {
+                    const textSpan = document.createElement("span");
+                    textSpan.textContent = parts[i];
+                    contentDiv.appendChild(textSpan);
                 }
             } else {
-                contentDiv.textContent = message;
+                // Code part
+                const codeBlock = document.createElement("pre");
+                codeBlock.classList.add("code-block");
+                
+                // Check if there's a language specified
+                const codeContent = parts[i].trim();
+                const firstLineEnd = codeContent.indexOf('\n');
+                
+                if (firstLineEnd > 0) {
+                    const possibleLang = codeContent.substring(0, firstLineEnd).trim();
+                    if (['javascript', 'js', 'html', 'css', 'python', 'java', 'c', 'cpp'].includes(possibleLang)) {
+                        
+codeBlock.innerHTML = Prism.highlight(
+    codeContent.substring(firstLineEnd + 1),
+    Prism.languages[possibleLang] || Prism.languages.javascript,
+    possibleLang
+);
+codeBlock.classList.add(`language-${possibleLang}`);
+
+                    } else {
+                        codeBlock.textContent = codeContent;
+                    }
+                } else {
+                    codeBlock.textContent = codeContent;
+                }
+                
+                contentDiv.appendChild(codeBlock);
             }
-            
-            // Assemble the message
-            messageDiv.appendChild(avatarDiv);
-            messageDiv.appendChild(contentDiv);
-            
-            chat.appendChild(messageDiv);
-            chat.scrollTop = chat.scrollHeight; // Scroll to bottom
-            messageDiv.classList.add("fade-in");
         }
+    } else {
+        contentDiv.textContent = message;
+    }
+    
+    // Assemble the message
+    messageDiv.appendChild(avatarDiv);
+    messageDiv.appendChild(contentDiv);
+    
+    chat.appendChild(messageDiv);
+    chat.scrollTop = chat.scrollHeight; // Scroll to bottom
+    messageDiv.classList.add("fade-in");
+}
 
         // Funktion, um zu überprüfen, ob der Text Code ist
         function isCode(text) {
@@ -509,10 +524,10 @@
                     'Authorization': `Bearer ${apiKey}`,
                 },
                 body: JSON.stringify({
-                    model: 'google/gemini-2.0-flash-thinking-exp:free',  // Primäres Modell
+                    model: 'openrouter/quasar-alpha',  // Primäres Modell
                     models: [
-                        'google/gemini-2.5-pro-exp-03-25:free',
-                        'google/gemma-3-1b-it:free'
+                        'liquid/lfm-7b',
+                        'meta-llama/llama-4-maverick:free'
                     ], // Liste von Fallback-Modellen
                     messages: chatMessagesStore[currentChatId]
                 })
@@ -563,5 +578,11 @@
             }
         });
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-html.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+
 </body>
 </html>
