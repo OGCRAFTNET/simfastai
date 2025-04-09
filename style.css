@@ -22,6 +22,24 @@ body {
     width: 100%;
     position: relative;
 }
+.copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #3e3f4b;
+    color: #ececf1;
+    border: 1px solid #565869;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    z-index: 10;
+}
+
+.copy-button:hover {
+    background-color: #565869;
+}
 
 /* Sidebar styles */
 .sidebar {
